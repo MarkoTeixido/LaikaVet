@@ -11,7 +11,6 @@ import {
     Package,
     BarChart,
     LogOut,
-    Dog,
     Stethoscope
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -42,8 +41,8 @@ const AdminLayout = () => {
             <aside className="w-72 bg-card/50 backdrop-blur-xl border-r border-border/50 flex flex-col transition-all duration-300">
                 <div className="p-6 flex items-center justify-between border-b border-border/40">
                     <div className="flex items-center space-x-3">
-                        <div className="h-10 w-10 bg-primary/10 rounded-xl flex items-center justify-center">
-                            <Dog className="h-6 w-6 text-primary" />
+                        <div className="h-10 w-10 flex items-center justify-center overflow-hidden">
+                            <img src="/laikavet-logo.png" alt="LaikaVet Logo" className="h-14 w-14 object-contain" />
                         </div>
                         <span className="text-xl font-bold tracking-tight">LaikaVet</span>
                     </div>

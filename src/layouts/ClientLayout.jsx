@@ -3,7 +3,7 @@ import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, LogOut, Dog } from 'lucide-react';
+import { ShoppingCart, LogOut } from 'lucide-react';
 import { ModeToggle } from '@/components/mode-toggle';
 import { cn } from '@/lib/utils';
 
@@ -24,8 +24,8 @@ const ClientLayout = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16 items-center">
                         <Link to="/client" className="flex items-center space-x-3 group">
-                            <div className="h-9 w-9 bg-primary/10 rounded-lg flex items-center justify-center transition-colors group-hover:bg-primary/20">
-                                <Dog className="h-5 w-5 text-primary" />
+                            <div className="h-10 w-10 flex items-center justify-center overflow-hidden">
+                                <img src="/laikavet-logo.png" alt="LaikaVet Logo" className="h-14 w-14 object-contain" />
                             </div>
                             <span className="text-xl font-bold tracking-tight">LaikaVet Store</span>
                         </Link>
@@ -71,7 +71,7 @@ const ClientLayout = () => {
                 <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <div className="flex items-center space-x-2">
-                            <Dog className="h-5 w-5 text-muted-foreground" />
+                            <img src="/laikavet-logo.png" alt="LaikaVet Logo" className="h-14 w-14 object-contain" />
                             <span className="text-sm font-semibold text-muted-foreground">LaikaVet</span>
                         </div>
                         <p className="text-sm text-muted-foreground text-center md:text-right">

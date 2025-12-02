@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Loader2, Dog, ArrowRight } from 'lucide-react';
+import { Loader2, ArrowRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 
 const Login = () => {
@@ -49,8 +49,8 @@ const Login = () => {
             <div className="flex-1 flex items-center justify-center p-8 sm:p-12 lg:p-16">
                 <div className="w-full max-w-sm space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
                     <div className="space-y-2">
-                        <div className="h-10 w-10 bg-primary rounded-lg flex items-center justify-center mb-4">
-                            <Dog className="h-6 w-6 text-primary-foreground" />
+                        <div className="mb-4">
+                            <img src="/laikavet-logo.png" alt="LaikaVet Logo" className="h-16 w-16 object-contain" />
                         </div>
                         <h1 className="text-3xl font-bold tracking-tight">Bienvenido de nuevo</h1>
                         <p className="text-muted-foreground">Ingresa tus credenciales para acceder a tu cuenta.</p>
