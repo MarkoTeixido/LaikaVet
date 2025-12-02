@@ -11,7 +11,9 @@ import {
     Package,
     BarChart,
     LogOut,
-    Stethoscope
+    Stethoscope,
+    Menu,
+    X
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -19,6 +21,7 @@ const AdminLayout = () => {
     const { logout, user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
     const handleLogout = () => {
         logout();
@@ -36,9 +39,20 @@ const AdminLayout = () => {
     ];
 
     return (
-        <div className="flex h-screen bg-background">
+        <div className="flex h-screen bg-background overflow-hidden">
+            {/* Mobile Sidebar Overlay */}
+            {isSidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
+                    onClick={() => setIsSidebarOpen(false)}
+                />
+            )}
+
             {/* Sidebar */}
-            <aside className="w-72 bg-card/50 backdrop-blur-xl border-r border-border/50 flex flex-col transition-all duration-300">
+            <aside className={cn(
+                "fixed inset-y-0 left-0 z-50 w-72 bg-card/50 backdrop-blur-xl border-r border-border/50 flex flex-col transition-transform duration-300 md:relative md:translate-x-0",
+                isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            )}>
                 <div className="p-6 flex items-center justify-between border-b border-border/40">
                     <div className="flex items-center space-x-3">
                         <div className="h-10 w-10 flex items-center justify-center overflow-hidden">
@@ -46,7 +60,12 @@ const AdminLayout = () => {
                         </div>
                         <span className="text-xl font-bold tracking-tight">LaikaVet</span>
                     </div>
-                    <ModeToggle />
+                    <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsSidebarOpen(false)}>
+                        <X className="h-5 w-5" />
+                    </Button>
+                    <div className="hidden md:block">
+                        <ModeToggle />
+                    </div>
                 </div>
 
                 <div className="p-6 border-b border-border/40">
@@ -74,6 +93,7 @@ const AdminLayout = () => {
                             <Link
                                 key={item.path}
                                 to={item.path}
+                                onClick={() => setIsSidebarOpen(false)}
                                 className={cn(
                                     "flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 group",
                                     isActive
@@ -101,9 +121,20 @@ const AdminLayout = () => {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1 overflow-y-auto p-8 bg-muted/20">
-                <div className="max-w-7xl mx-auto">
-                    <Outlet />
+            <main className="flex-1 flex flex-col h-full overflow-hidden">
+                {/* Mobile Header */}
+                <header className="md:hidden h-16 border-b border-border/40 flex items-center justify-between px-4 bg-card/50 backdrop-blur-xl">
+                    <Button variant="ghost" size="icon" onClick={() => setIsSidebarOpen(true)}>
+                        <Menu className="h-6 w-6" />
+                    </Button>
+                    <span className="text-lg font-bold">LaikaVet</span>
+                    <ModeToggle />
+                </header>
+
+                <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-muted/20">
+                    <div className="max-w-7xl mx-auto">
+                        <Outlet />
+                    </div>
                 </div>
             </main>
         </div>

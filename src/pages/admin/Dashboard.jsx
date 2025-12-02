@@ -104,9 +104,9 @@ const Dashboard = () => {
                 </Card>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-7">
                 {/* Chart */}
-                <Card className="col-span-4 shadow-md">
+                <Card className="col-span-1 lg:col-span-4 shadow-md">
                     <CardHeader>
                         <CardTitle>Resumen de Ingresos</CardTitle>
                         <CardDescription>Ingresos diarios de la última semana.</CardDescription>
@@ -148,7 +148,7 @@ const Dashboard = () => {
                 </Card>
 
                 {/* Recent Activity */}
-                <Card className="col-span-3 shadow-md">
+                <Card className="col-span-1 lg:col-span-3 shadow-md">
                     <CardHeader>
                         <CardTitle className="flex items-center">
                             <Activity className="mr-2 h-5 w-5 text-primary" />
